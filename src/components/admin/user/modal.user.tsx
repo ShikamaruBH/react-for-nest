@@ -51,8 +51,8 @@ const ModalUser = (props: IProps) => {
                 address,
                 role,
                 company: {
-                    _id: company._id,
-                    name: company.name
+                    _id: company.value ? company.value : company._id,
+                    name: company.label ? company.label : company.name,
                 }
             }
             const res = await callUpdateUser(user);
@@ -77,8 +77,8 @@ const ModalUser = (props: IProps) => {
                 address,
                 role,
                 company: {
-                    _id: company._id,
-                    name: company.name
+                    _id: company.value,
+                    name: company.label
                 }
             }
             const res = await callCreateUser(user);
