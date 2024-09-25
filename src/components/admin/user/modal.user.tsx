@@ -37,6 +37,7 @@ const ModalUser = (props: IProps) => {
         }
     }, [dataInit])
     const submitUser = async (valuesForm: any) => {
+        
         const { name, email, password, address, age, gender, role, company } = valuesForm;
         if (dataInit?._id) {
             //update
@@ -50,11 +51,10 @@ const ModalUser = (props: IProps) => {
                 address,
                 role,
                 company: {
-                    _id: company.value,
-                    name: company.label
+                    _id: company._id,
+                    name: company.name
                 }
             }
-
             const res = await callUpdateUser(user);
             if (res.data) {
                 message.success("Cập nhật user thành công");
@@ -77,8 +77,8 @@ const ModalUser = (props: IProps) => {
                 address,
                 role,
                 company: {
-                    _id: company.value,
-                    name: company.label
+                    _id: company._id,
+                    name: company.name
                 }
             }
             const res = await callCreateUser(user);
